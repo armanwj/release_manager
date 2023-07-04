@@ -22,7 +22,7 @@ class ReleaseManagerService(
         val deployment = deploymentRepository.findByDeployedServices_ServiceNameAndDeployedServices_Version(
             serviceDto.name ?: "", serviceDto.version ?: 0
         )
-        if (deployment == null) {
+        if (deployment == null || deployment.isEmpty()) {
             val service =
                 serviceDeployedRepository.save(
                     ServiceDeployed(

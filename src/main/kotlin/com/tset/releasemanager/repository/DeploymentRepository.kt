@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository
 interface DeploymentRepository : JpaRepository<Deployment, Long> {
     fun findFirstByOrderBySystemVersionDesc(): Deployment?
     fun findBySystemVersion(systemVersion: Int): Deployment?
-    fun findByDeployedServices_ServiceNameAndDeployedServices_Version(serviceName :String, version :Int) :Deployment?
+    fun findByDeployedServices_ServiceNameAndDeployedServices_Version(serviceName :String, version :Int) :Collection<Deployment>
 }
